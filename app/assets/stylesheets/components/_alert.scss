@@ -1,0 +1,20 @@
+/* -------------------------------------
+ * Your CSS code for flash notices and alerts
+* ------------------------------------- */
+
+.alert {
+  left: 0;
+  position: relative;
+  text-align: center;
+  width: 100% !important;
+  color: white;
+  border: none;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+.alert-info {
+  background: $green;
+}
+.alert-warning {
+  background: $red;
+}

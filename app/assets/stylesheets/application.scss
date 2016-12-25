@@ -1,0 +1,17 @@
+// Graphical variables
+@import "config/variables";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "materialize";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "jquery-ui";
+
+// Own CSS
+@import "components/index";
+@import "pages/index";
+@import "vendor/index";
+@import "layout/index";

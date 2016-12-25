@@ -1,0 +1,24 @@
+@media screen and (min-width: 768px) {
+        .modal-dialog {
+          width: 540px; /* New width for default modal */
+        }
+        .modal-sm {
+          width: 350px; /* New width for small modal */
+        }
+    }
+    @media screen and (min-width: 992px) {
+        .modal-lg {
+          width: 950px; /* New width for large modal */
+        }
+    }
+
+.modal-header {
+    border: none;
+    background-color: #ffb949!important;
+    padding-top: 15px;
+    padding-bottom: 15px;
+ }
+
+ .modal-content {
+    min-height: 300px;
+ }
