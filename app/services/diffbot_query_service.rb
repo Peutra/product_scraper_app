@@ -16,12 +16,13 @@ class DiffbotQueryService
     uri = URI(ENDPOINT + '&url=' + user_url + '&token=' + TOKEN)
     puts uri
     binding pry
-    result = Net::HTTP.get(uri)
-    return result
+    format_response(Net::HTTP.get(uri))
   end
 
-  def format_response(content)
+  private
 
+  def format_response(json)
+    
   end
 
 end

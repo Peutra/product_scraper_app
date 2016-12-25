@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
 
   include ERB::Util
 
+  before_filter :load_product
+  after_filter :save_product
+
   def query
+    @product
   end
 
   def geturl
@@ -16,10 +20,28 @@ class ProductsController < ApplicationController
     end
   end
 
+  def reset_product
+    @product = Hash.new
+    @products_count = 0
+    session[:products] = Hash.new
+    session[:products_count] = 0
+    render 'products/query'
+  end
+
   private
 
   def params_product_url
     params.require(:product_url).permit(:url)
+  end
+
+  def load_product
+    @product = session[:products] || Hash.new
+    @count = session[:products_count] || 0
+  end
+
+  def save_product
+    session[:products_count] += 1
+    session[:products] = @product
   end
 
 end
