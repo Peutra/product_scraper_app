@@ -4,7 +4,7 @@
 // Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
-$base-font: "Raleway", "Helvetica", "sans-serif";
+$base-font: "Open Sans", "Helvetica", "sans-serif";
 $header-font: "Raleway", "Helvetica", "sans-serif";
 $form-font: "Roboto Mono", "Open Sans", "sans-serif";
 
@@ -39,4 +39,4 @@ $grey-dark:    lighten(#000, 20%);   // #333
 $grey:         lighten(#000, 33.5%); // #555
 $grey-light:   lighten(#000, 46.7%); // #777
 $grey-lighter: lighten(#000, 93.5%); // #eee
-$blue-lighter: lighten($blue, 46.7%); //
+$blue-lighter: lighten($blue, 46.7%); // 
