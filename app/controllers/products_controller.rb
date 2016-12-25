@@ -1,10 +1,19 @@
 class ProductsController < ApplicationController
 
+  include ERB::Util
+
   def query
   end
 
   def geturl
     @product_url = params_product_url
+    get_response(@product_url)
+  end
+
+  def get_response(url)
+    if encoded_url = url_encode(url)
+      response = DiffbotQueryService.new.get_response(encoded_url)
+    end
   end
 
   private

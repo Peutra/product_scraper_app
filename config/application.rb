@@ -38,6 +38,14 @@ module Shortcinema
     config.exceptions_app = self.routes
     config.i18n.default_locale = :fr
 
+    config.autoload_paths += %W(
+        #{config.root}/app/services
+    )
+
+    config.eager_load_paths += %W(
+        #{config.root}/app/services
+    )
+
   end
 
 end
