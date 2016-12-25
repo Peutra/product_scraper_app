@@ -1,0 +1,369 @@
+/* -------------------------------------
+ * Utilities classes
+ * These are examples of utilities classes
+ * Feel free to change them and create your own
+ * ------------------------------------- */
+
+// Paddings spacers
+
+.padded {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.small-padded {
+  padding-top: 1.6em;
+  padding-bottom: 1.6em;
+}
+
+.small-marged {
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+}
+
+.small-paddedtitle {
+  padding-top: 1.6em;
+}
+
+.padding-top {
+  padding-top: 3em;
+}
+
+.padding-bottom {
+  padding-bottom: 3em;
+}
+
+.small-margin-top {
+  margin-top: 10px;
+}
+
+.small-margin-left {
+  margin-left: 10px;
+}
+
+.small-spacer {
+  padding: 10px 5px;
+}
+
+.spacer {
+	padding: 20px 10px;
+}
+
+.fat-spacer {
+	height: 2em;
+}
+
+.small-paddingtop {
+  padding-top: 5px;
+}
+
+.medium-paddingtop {
+  padding-top: 1em;
+}
+
+.medium-paddingbottom {
+  padding-bottom: 1em;
+}
+.margin-top {
+  margin-top: 2em;
+}
+
+// Screens viewport divider first screen
+
+.first-screen {
+	min-height: calc(100vh - 70px);
+	border-right:none;
+	border-left: none;
+	position: relative;
+	width: 100%;
+	overflow: visible;
+	background-size: cover !important;
+  background-position: 50% 50% !important;
+}
+
+
+// Screens viewport divider other than first screen
+
+.fullscreen {
+	min-height: 100vh;
+	border-right:none;
+	border-left: none;
+	position: relative;
+	width: 100%;
+	overflow: visible;
+  background-size: cover !important;
+  background-position: 50% 50% !important;
+}
+
+.screen {
+	min-height: 568px;
+	border-right:none;
+	border-left: none;
+	position: relative;
+	width: 100%;
+	overflow: visible;
+  background-size: cover !important;
+  background-position: 50% 50% !important;
+  background-repeat: no-repeat;
+}
+
+// Titles
+
+.title-padding {
+	padding-top: 1.2em;
+}
+
+.title-smallpadding {
+	padding-top: 0.4em;
+}
+
+@media screen and (max-width : 1200px)
+{
+  .first-title
+  {
+    font-size:4em !important;
+  }
+
+  .subtitle
+  {
+    font-size:2em !important;
+  }
+}
+
+
+/* ----------- Non-Retina Screens ----------- */
+
+@media screen
+  and (min-device-width: 1201px)
+  and (max-device-width: 1599px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+  	.first-title
+  	{
+  	  font-size:4em !important;
+  	}
+    .subtitle
+    {
+      font-size:2em !important;
+    }
+}
+
+/* ----------- Retina Screens ----------- */
+
+@media screen
+  and (min-device-width: 1201px)
+  and (max-device-width: 1599px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) {
+  	.first-title
+  	{
+  	  font-size:4em !important;
+  	}
+    .subtitle
+    {
+      font-size:2em !important;
+    }
+}
+
+/* ----------- Non-Retina Screens ----------- */
+
+@media screen
+  and (min-device-width: 1600px)
+  and (max-device-width: 1824px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .first-title
+    {
+      font-size:6em !important;
+    }
+    .subtitle
+    {
+      font-size:4em !important;
+    }
+}
+
+/* ----------- Retina Screens ----------- */
+
+@media screen
+  and (min-device-width: 1600px)
+  and (max-device-width: 1824px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) {
+    .first-title
+    {
+      font-size:6em !important;
+    }
+    .subtitle
+    {
+      font-size:4em !important;
+    }
+}
+
+@media screen and (min-width : 1825px)
+{
+  .first-title
+  {
+    font-size:8em !important;
+  }
+  .subtitle
+  {
+    font-size:6em !important;
+  }
+}
+
+
+.small-font {
+  font-size: 10px;
+}
+
+
+
+
+// Backgrounds
+.bg-black {
+  background: #4a4a4a;
+}
+.bg-grey {
+  background: #aeaeae;
+}
+.bg-blue {
+  background: #00a3e1;
+}
+.bg-dark-blue {
+  background: #3b5998;
+}
+
+
+// texts
+
+.text-white {
+	color: #FFFFFF;
+}
+
+.text-orange {
+  color: #ffaa23;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-large {
+	font-size: 4em;
+}
+
+.text-intermediate {
+  font-size: 3.4em;
+}
+
+.text-md {
+  font-size: 2em;
+}
+
+.text-medium {
+	font-size: 1.4em;
+}
+
+.text-small {
+  font-size: 0.8em !important;
+}
+
+.text-very-small {
+  font-size: 0.5em !important;
+}
+
+.text-very-very-small {
+ font-size: 0.1em !important;
+}
+
+.text-subtitle {
+	font-size: 2.4em;
+}
+
+.text-button {
+  font-size: 1em;
+}
+
+.text-space {
+	letter-spacing: 4px;
+}
+
+.text-shadow {
+	text-shadow: 1px 1px 3px rgb(72, 86, 84);
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-grey {
+	color: $grey-light;
+}
+
+.text-medium-grey {
+  color: #555555 !important;
+}
+
+.text-light-grey {
+  color: #d1d1d1 !important;
+}
+
+
+// Positionning
+
+
+// Hiding
+
+.hide {
+  display: none;
+}
+
+// Links
+// Color
+
+.orange {
+  color: $orange;
+}
+
+
+// Border radius
+
+.border-radius {
+  border-radius: 10px !important;
+}
+
+.smallborder-radius {
+  border-radius: 5px !important;
+}
+
+.smalltopborder-radius {
+ border-top-left-radius: 5px !important;
+ border-top-right-radius: 5px !important;
+}
+
+
+// Positionning
+
+.flexvertical-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.bottom-positioned {
+  position: absolute;
+  bottom: 0;
+}
+
+
+/* lists */
+
+.list-no-style {
+  list-style-type: none;
+}
+
+.list-margin-top {
+  margin-top: 10px;
+}
