@@ -1,3 +1,5 @@
+<% provide(:title, 'Home') %>
+
 <div class="spacer"></div>
 
 <div class="container">
@@ -9,15 +11,12 @@
 </div>
 
 <div class="spacer"></div>
+<div class="spacer"></div>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <%= simple_form_for :product_url do |f| %>
-        <%= f.error_notification %>
-        <%= f.input :url, label: 'Paste product\'s url' %>
-        <%= f.button :submit, 'Submit' %>
-      <% end %>
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <%= link_to 'Start scraping products', query_path, class: "button success" %>
     </div>
   </div>
 </div>
