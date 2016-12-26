@@ -1,5 +1,14 @@
+.product-query-display {
+  h2 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 12px;
+  }
+}
+
 .product-card {
-  height: 175px;
+  height: 200px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;

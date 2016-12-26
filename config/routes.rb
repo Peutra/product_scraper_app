@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/products/query' => 'products#query', as: :query
   post 'products/query' => 'products#geturl'
+  get 'products/reset' => 'products#reset_products'
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

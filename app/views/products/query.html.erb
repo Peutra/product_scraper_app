@@ -11,6 +11,9 @@
         <%= f.error_notification %>
         <%= f.input :url, label: 'Paste product\'s url' %>
         <%= f.button :submit, 'Submit', class: "button info" %>
+        <% if !session[:products] %>          
+          <%= link_to 'Erase', products_reset_path, class: "button alert" %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -22,12 +25,21 @@
 <% if session[:products_count] > 0 %>
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
+      <div class="col-sm-8 col-sm-offset-2 product-query-display">
         <% session[:products].each do |product| %>
-          <div class="col-xs-12 col-sm-4">
-            <div class="product-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= product[1]['image'] %>');">
-              <div class="product-card-category"><%= product[1]['brand'] %></div>
-              <%= link_to "", "#{product[1]['url']}", class: "product-card-link", target: "_blank" %>              
+        <div class="padding-top">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4">
+                <div class="product-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= product[1]['image'] %>');">
+                  <div class="product-card-category"><%= product[1]['brand'] %></div>
+                  <%= link_to "", "#{product[1]['url']}", class: "product-card-link", target: "_blank" %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-8">
+                <h2><%= product[1]['title'] %></h2>
+                <p><%= product[1]['description'] %></p>
+                <p><%= product[1]['price'] %> <%= product[1]['currency'] %></p>
+              </div>
             </div>
           </div>
         <% end %>
