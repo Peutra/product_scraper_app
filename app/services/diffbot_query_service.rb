@@ -1,5 +1,6 @@
-# TO DO understand how to secure a GET request... and secure current request
-# Maybe https is sufficient ?
+# To do : understand how to secure a GET request... and secure current request
+# Maybe http"S" is sufficient ?
+# To do : delete unnecessary libs from various tests
 
 class DiffbotQueryService
 
@@ -19,7 +20,7 @@ class DiffbotQueryService
 
   private
 
-  def format_response(json)        
+  def format_response(json)
     hash = Hash.new
     hash['title'] = json['objects'][0]['title']
     hash['price'] = json['objects'][0]['offerPriceDetails']['amount']
