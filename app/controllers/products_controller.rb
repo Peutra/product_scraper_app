@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def save_products
-    batch = Product.get_current_batch
+    batch = Product.current_batch
     session[:products].each do |product|
       new_product = Product.create(
                       title: product[1]['title'],
@@ -44,8 +44,14 @@ class ProductsController < ApplicationController
 
   def index
     @number_of_batches = Product.number_of_batches
+    @reverse_range_of_batches = (@number_of_batches..1)
     @products = Product.all
   end
+
+  def batch_creation_date(number)
+    Product.batch_creation_date(number)
+  end
+  helper_method :batch_creation_date
 
   def edit
   end

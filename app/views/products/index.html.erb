@@ -1,5 +1,8 @@
 <% provide(:title, 'Products index') %>
 
+<div class="spacer"></div>
+<div class="spacer"></div>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
@@ -7,3 +10,35 @@
     </div>
   </div>
 </div>
+
+<% if @number_of_batches > 0 %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 product-query-display">
+        <% (@reverse_range_of_batches.first).downto(@reverse_range_of_batches.last).each do |number| %>
+          <div class="batch-separator padding-top">Batch #<%= number %> | <%= batch_creation_date(number).strftime("%B %d at %H:%M") %></div>
+          <% @products.products_with_batch(number).each do |product| %>
+            <div class="padding-top">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="product-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= product.image %>'); background-position: right bottom">
+                      <div class="product-card-category"><%= product.brand %></div>
+                      <%= link_to "", "#{product.url}", class: "product-card-link", target: "_blank" %>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-8">
+                    <h2><%= product.title %></h2>
+                    <p><%= truncate(product.description, :length => 396) %></p>
+                    <span class="label"><%= product.price %> <%= product.currency %></span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="spacer"></div>
+<div class="spacer"></div>
