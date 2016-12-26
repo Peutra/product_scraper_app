@@ -39,10 +39,12 @@ class ProductsController < ApplicationController
                    )
     end
     session_products_delete
-    redirect_to :action => 'index'    
+    redirect_to :action => 'index'
   end
 
   def index
+    @number_of_batches = Product.number_of_batches
+    @products = Product.all
   end
 
   def edit
