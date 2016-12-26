@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'products/query' => 'products#query', as: :query
   post 'products/query' => 'products#geturl'
   get 'products/reset' => 'products#reset_products'
+  get 'products/save' => 'products#save_products'
   resources :products, except: [:new, :create]
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

@@ -25,9 +25,21 @@ class ProductsController < ApplicationController
   end
 
   def save_products
-    # 1. Get session[products]
-    # 2. Save // edit model to get batch n° and increment
-    # 3. call reset_products
+    batch = Product.get_current_batch
+    session[:products].each do |product|
+      new_product = Product.create(
+                      title: product[1]['title'],
+                      price: product[1]['price'],
+                      currency: product[1]['currency'],
+                      image: product[1]['image'],
+                      description: product[1]['description'],
+                      url: product[1]['url'],
+                      brand: product[1]['brand'],
+                      batch: batch
+                   )
+    end
+    session_products_delete
+    redirect_to :action => 'index'    
   end
 
   def index
@@ -46,8 +58,7 @@ class ProductsController < ApplicationController
   end
 
   def reset_products
-    session.delete(:products)
-    session.delete(:products_count)
+    session_products_delete
     redirect_to :action => 'query'
   end
 
@@ -68,6 +79,11 @@ class ProductsController < ApplicationController
   def save_product(response)
     session[:products_count] += 1
     session[:products][session[:products_count]] = response
+  end
+
+  def session_products_delete
+    session.delete(:products)
+    session.delete(:products_count)
   end
 
 end

@@ -22,10 +22,10 @@
 
         <% if session[:products_count] > 0 %>
           <div class="col-sm-6 col-sm-offset-3">
-            <%= link_to 'Erase results', products_reset_path, class: "button alert foundation-btn" %>
+            <%= link_to 'Save results', products_save_path, class: "button button-success foundation-btn" %>
           </div>
           <div class="col-sm-6 col-sm-offset-3">
-            <%= link_to 'Save results', "#", class: "button button-success foundation-btn" %>
+            <%= link_to 'Erase results', products_reset_path, class: "button alert foundation-btn" %>
           </div>
         <% end %>
 
