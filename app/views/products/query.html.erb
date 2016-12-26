@@ -23,7 +23,14 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
-        <%= session[:products] %>
+        <% session[:products].each do |product| %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="product-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= product[1]['image'] %>');">
+              <div class="product-card-category"><%= product[1]['brand'] %></div>
+              <%= link_to "", "#{product[1]['url']}", class: "product-card-link", target: "_blank" %>              
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
