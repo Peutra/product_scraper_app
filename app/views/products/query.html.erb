@@ -11,11 +11,24 @@
         <%= f.error_notification %>
         <%= f.input :url, label: 'Paste product\'s url' %>
         <%= f.button :submit, 'Submit', class: "button info" %>
-        <% if !session[:products] %>          
-          <%= link_to 'Erase', products_reset_path, class: "button alert" %>
-        <% end %>
       <% end %>
     </div>
+  </div>
+</div>
+
+<div class="spacer"></div>
+<div class="container">
+  <div class="row">
+
+        <% if session[:products_count] > 0 %>
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= link_to 'Erase results', products_reset_path, class: "button alert foundation-btn" %>
+          </div>
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= link_to 'Save results', "#", class: "button button-success foundation-btn" %>
+          </div>
+        <% end %>
+
   </div>
 </div>
 
@@ -37,7 +50,7 @@
               </div>
               <div class="col-xs-12 col-sm-8">
                 <h2><%= product[1]['title'] %></h2>
-                <p><%= product[1]['description'] %></p>
+                <p><%= truncate(product[1]['description'], :length => 512) %></p>
                 <p><%= product[1]['price'] %> <%= product[1]['currency'] %></p>
               </div>
             </div>
