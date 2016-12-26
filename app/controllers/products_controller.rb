@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
 
   include ERB::Util
 
-  before_filter :load_product
-  after_filter :save_product
+  # before_filter :load_product
+  # after_filter :save_product
 
   def query
     @product
@@ -17,10 +17,12 @@ class ProductsController < ApplicationController
   def get_response(url)
     if encoded_url = url_encode(url)
       response = DiffbotQueryService.new.get_response(url)
+      p response
+      binding.pry
     end
   end
 
-  def reset_product
+  def reset_products
     @product = Hash.new
     @products_count = 0
     session[:products] = Hash.new
@@ -34,14 +36,14 @@ class ProductsController < ApplicationController
     params.require(:product_url).permit(:url)
   end
 
-  def load_product
-    @product = session[:products] || Hash.new
-    @count = session[:products_count] || 0
-  end
-
-  def save_product
-    session[:products_count] += 1
-    session[:products] = @product
-  end
+  # def load_product
+  #   @product = session[:products] || Hash.new
+  #   @count = session[:products_count] || 0
+  # end
+  #
+  # def save_product
+  #   session[:products_count] += 1
+  #   session[:products] = @product
+  # end
 
 end

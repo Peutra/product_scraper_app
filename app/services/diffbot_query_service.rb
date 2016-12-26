@@ -14,15 +14,21 @@ class DiffbotQueryService
 
   def get_response(user_url)
     uri = URI(ENDPOINT + '&url=' + user_url + '&token=' + TOKEN)
-    puts uri
-    binding pry
-    format_response(Net::HTTP.get(uri))
+    format_response(JSON.parse(Net::HTTP.get(uri)))
   end
 
   private
 
-  def format_response(json)
-    
+  def format_response(json)        
+    hash = Hash.new
+    hash['title'] = json['objects'][0]['title']
+    hash['price'] = json['objects'][0]['offerPriceDetails']['amount']
+    hash['currency'] = json['objects'][0]['offerPriceDetails']['symbol']
+    hash['image'] = json['objects'][0]['images'][0]['url']
+    hash['description'] = json['objects'][0]['text']
+    hash['url'] = json['objects'][0]['pageUrl']
+    hash['brand'] = json['objects'][0]['brand']
+    return hash
   end
 
 end
