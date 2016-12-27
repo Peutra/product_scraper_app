@@ -1,14 +1,12 @@
 class ProductsController < ApplicationController
 
   include ERB::Util
-  require 'uri'
 
   before_filter :load_product, only: [:query]
 
   def query
   end
 
-  # To do : validations
   def geturl
     @product_url = params_product_url
     if valid?(@product_url['url'])
@@ -20,13 +18,13 @@ class ProductsController < ApplicationController
   end
 
   # DiffbotQueryService is... a service that can be found in app/services
-  # To do : validations
   def get_response(url)
-    if encoded_url = url_encode(url)
-      if response = DiffbotQueryService.new.get_response(url)
-          save_product(response)
-          redirect_to :action => 'query'
-      end
+    if response = DiffbotQueryService.new.get_response(url)
+        save_product(response)
+        redirect_to :action => 'query'
+      else
+        flash[:alert] = 'Something went wrong processing your request'
+        redirect_to :action => 'query'
     end
   end
 
