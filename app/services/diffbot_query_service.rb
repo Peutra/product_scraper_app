@@ -14,7 +14,7 @@ class DiffbotQueryService
   TOKEN = ENV["DIFFBOT_TOKEN"]
 
   def get_response(user_url)
-    uri = URI(ENDPOINT + '&url=' + user_url + '&token=' + TOKEN)
+    uri = URI(ENDPOINT + '&url=' + url_encode(user_url) + '&token=' + TOKEN)
     format_response(JSON.parse(Net::HTTP.get(uri)))
   end
 
