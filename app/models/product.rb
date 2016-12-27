@@ -1,5 +1,10 @@
 class Product < ActiveRecord::Base
-  # To do : validations
+  validates :url, :url => {:allow_blank => true}
+  validates :image, :url => {:allow_blank => true}
+  validates :title, presence: true
+  validates :description, presence: true, allow_blank: true
+  validates :currency, presence: true
+  validates :price, presence: true, numericality: true
 
   def self.current_batch
     Product.maximum('batch') ? Product.maximum('batch') + 1 : 1

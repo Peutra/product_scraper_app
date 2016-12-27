@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
         save_product(response)
         redirect_to :action => 'query'
       else
-        flash[:alert] = 'Something went wrong processing your request'
+        flash[:alert] = 'Woups something went wrong processing your request'
         redirect_to :action => 'query'
     end
   end
