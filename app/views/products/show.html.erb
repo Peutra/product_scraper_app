@@ -9,3 +9,28 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="padding-top">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
+              <div class="product-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= @product.image %>'); background-position: right bottom">
+                <div class="product-card-category"><%= @product.brand %></div>
+                <%= link_to "", "#{@product.url}", class: "product-card-link", target: "_blank" %>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <h2><%= @product.title %></h2>
+              <p><%= truncate(@product.description, :length => 396) %></p>
+              <span class="label"><%= @product.price %> <%= @product.currency %></span>
+              <span class="label warning">
+                <%= link_to 'Edit', edit_product_path(@product.id) %>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

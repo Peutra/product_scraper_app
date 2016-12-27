@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  include ERB::Util  
+  include ERB::Util
 
   before_filter :load_product, only: [:query]
 
@@ -63,8 +63,8 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(product_params)
-      respond_with @product
+    if @product.update(params_product)
+      redirect_to controller: 'products', action: 'show', id: @product.id
     else
       render :edit
     end
@@ -88,6 +88,8 @@ class ProductsController < ApplicationController
   end
 
   def params_product
+    params.require(:product).permit(:url, :title, :description, :currency,
+                                    :image, :price)
   end
 
   def load_product

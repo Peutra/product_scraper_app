@@ -9,3 +9,19 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= simple_form_for @product do |f| %>
+        <%= f.input :title, label: 'Change title', error: 'Title, please specify one' %>
+        <%= f.input :description, as: :text %>
+        <%= f.input :url %>
+        <%= f.input :image %>
+        <%= f.input :price %>
+        <%= f.input :currency %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
