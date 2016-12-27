@@ -18,6 +18,7 @@ gem 'foundation-rails'
 gem 'autoprefixer-rails'
 gem 'valid_url'
 gem 'public_suffix'
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do
   gem 'binding_of_caller'

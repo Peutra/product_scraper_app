@@ -20,7 +20,8 @@
       <%= simple_form_for :product_url do |f| %>
         <%= f.error_notification %>
         <%= f.input :url, label: 'Paste product\'s url', as: :url %>
-        <%= f.button :submit, 'Submit', class: "button info" %>
+        <%= recaptcha_tags %>
+        <%= f.button :submit, 'Submit', class: "button info small-margin-top" %>
       <% end %>
     </div>
   </div>

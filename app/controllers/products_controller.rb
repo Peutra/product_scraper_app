@@ -8,11 +8,16 @@ class ProductsController < ApplicationController
   end
 
   def geturl
-    @product_url = params_product_url
-    if valid?(@product_url['url'])
-      get_response(@product_url['url'])
+    if verify_recaptcha
+      @product_url = params_product_url
+      if valid?(@product_url['url'])
+        get_response(@product_url['url'])
+      else
+        flash[:alert] = 'This url does not feel valid'
+        redirect_to :action => 'query'
+      end
     else
-      flash[:alert] = 'This url does not feel valid'
+      flash[:notice] = 'Please confirm humanity'
       redirect_to :action => 'query'
     end
   end
