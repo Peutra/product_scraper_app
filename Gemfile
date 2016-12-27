@@ -16,6 +16,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'
+gem 'valid_url'
+gem 'public_suffix'
 
 group :development, :test do
   gem 'binding_of_caller'

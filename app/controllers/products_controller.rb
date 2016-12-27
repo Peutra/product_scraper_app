@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   include ERB::Util
+  require 'uri'
 
   before_filter :load_product, only: [:query]
 
@@ -10,7 +11,12 @@ class ProductsController < ApplicationController
   # To do : validations
   def geturl
     @product_url = params_product_url
-    get_response(@product_url['url'])
+    if valid?(@product_url['url'])
+      get_response(@product_url['url'])
+    else
+      flash[:alert] = 'This url does not feel valid'
+      redirect_to :action => 'query'
+    end
   end
 
   # DiffbotQueryService is... a service that can be found in app/services
@@ -105,6 +111,10 @@ class ProductsController < ApplicationController
   def session_products_delete
     session.delete(:products)
     session.delete(:products_count)
+  end
+
+  def valid?(url)
+    PublicSuffix.valid?(url_encode(url))
   end
 
 end
