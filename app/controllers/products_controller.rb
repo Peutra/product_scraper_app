@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  include ERB::Util
+  include ERB::Util  
 
   before_filter :load_product, only: [:query]
 
@@ -54,15 +54,26 @@ class ProductsController < ApplicationController
   helper_method :batch_creation_date
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      respond_with @product
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to request.referrer
   end
 
   def reset_products

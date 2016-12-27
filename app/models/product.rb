@@ -14,7 +14,11 @@ class Product < ActiveRecord::Base
   end
 
   def self.batch_creation_date(number)
-    products_with_batch(number).first.created_at
+    if products_with_batch(number).first
+      return products_with_batch(number).first.created_at
+    else
+      return false
+    end
   end
 
 end
