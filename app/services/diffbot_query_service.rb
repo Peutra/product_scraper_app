@@ -26,15 +26,23 @@ class DiffbotQueryService
 
   private
 
+  # To do : dryify
   def format_response(json)
     hash = Hash.new
-    json['objects'][0]['title'] ? hash['title'] = json['objects'][0]['title'] : hash['title'] = "NA"
-    json['objects'][0]['offerPriceDetails']['amount'] ? hash['price'] = json['objects'][0]['offerPriceDetails']['amount'] : hash['price'] = 0
-    json['objects'][0]['offerPriceDetails']['symbol'] ? hash['currency'] = json['objects'][0]['offerPriceDetails']['symbol'] : hash['currency'] = "NA"
-    json['objects'][0]['images'][0]['url'] ? hash['image'] = json['objects'][0]['images'][0]['url'] : hash['image'] = "https://placeholdit.imgix.net/~text?txtsize=47&txt=500%C3%97500&w=500&h=500"
-    json['objects'][0]['text'] ? hash['description'] = json['objects'][0]['text'] : hash['description'] = "No description"
-    json['objects'][0]['pageUrl'] ? hash['url'] = json['objects'][0]['pageUrl'] : hash['url'] = "http://404.com/"
-    json['objects'][0]['brand'] ? hash['brand'] = json['objects'][0]['brand'] : hash['brand'] = "Not provided"
+    title = json['objects'][0]['title'].nil? rescue true
+    amount = json['objects'][0]['offerPriceDetails']['amount'].nil? rescue true
+    currency = json['objects'][0]['offerPriceDetails']['symbol'].nil? rescue true
+    image = json['objects'][0]['images'][0]['url'].nil? rescue true
+    text = json['objects'][0]['text'].nil? rescue true
+    url = json['objects'][0]['pageUrl'].nil? rescue true
+    brand = json['objects'][0]['brand'].nil? rescue true
+    !title ? hash['title'] = json['objects'][0]['title'] : hash['title'] = "NA"
+    !amount ? hash['price'] = json['objects'][0]['offerPriceDetails']['amount'] : hash['price'] = 0
+    !currency ? hash['currency'] = json['objects'][0]['offerPriceDetails']['symbol'] : hash['currency'] = "NA"
+    !image ? hash['image'] = json['objects'][0]['images'][0]['url'] : hash['image'] = "https://placeholdit.imgix.net/~text?txtsize=47&txt=500%C3%97500&w=500&h=500"
+    !text ? hash['description'] = json['objects'][0]['text'] : hash['description'] = "No description"
+    !url ? hash['url'] = json['objects'][0]['pageUrl'] : hash['url'] = "http://404.com/"
+    !brand ? hash['brand'] = json['objects'][0]['brand'] : hash['brand'] = "Not provided"
     return hash
   end
 
