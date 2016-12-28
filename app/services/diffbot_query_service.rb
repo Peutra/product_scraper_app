@@ -17,7 +17,7 @@ class DiffbotQueryService
     encoded_url = url_encode(user_url)
     uri = URI(ENDPOINT + '&url=' + encoded_url + '&token=' + TOKEN)
     json = JSON.parse(Net::HTTP.get(uri))
-    if json.key?('errorCode')      
+    if json.key?('errorCode')
       return false
     else
       format_response(json)
@@ -28,17 +28,14 @@ class DiffbotQueryService
 
   def format_response(json)
     hash = Hash.new
-    if ( (hash['title'] = json['objects'][0]['title']) &&
-         (hash['price'] = json['objects'][0]['offerPriceDetails']['amount']) &&
-         (hash['currency'] = json['objects'][0]['offerPriceDetails']['symbol']) &&
-         (hash['image'] = json['objects'][0]['images'][0]['url']) &&
-         (hash['description'] = json['objects'][0]['text']) &&
-         (hash['url'] = json['objects'][0]['pageUrl']) &&
-         (hash['brand'] = json['objects'][0]['brand']) )
-       return hash
-    else
-      return false
-    end
+    json['objects'][0]['title'] ? hash['title'] = json['objects'][0]['title'] : hash['title'] = "NA"
+    json['objects'][0]['offerPriceDetails']['amount'] ? hash['price'] = json['objects'][0]['offerPriceDetails']['amount'] : hash['price'] = 0
+    json['objects'][0]['offerPriceDetails']['symbol'] ? hash['currency'] = json['objects'][0]['offerPriceDetails']['symbol'] : hash['currency'] = "NA"
+    json['objects'][0]['images'][0]['url'] ? hash['image'] = json['objects'][0]['images'][0]['url'] : hash['image'] = "https://placeholdit.imgix.net/~text?txtsize=47&txt=500%C3%97500&w=500&h=500"
+    json['objects'][0]['text'] ? hash['description'] = json['objects'][0]['text'] : hash['description'] = "No description"
+    json['objects'][0]['pageUrl'] ? hash['url'] = json['objects'][0]['pageUrl'] : hash['url'] = "http://404.com/"
+    json['objects'][0]['brand'] ? hash['brand'] = json['objects'][0]['brand'] : hash['brand'] = "Not provided"
+    return hash
   end
 
 end
